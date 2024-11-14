@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+{
+    position: relative;
+    background-color: white;
+    width: 320px;
+    height: 480px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0;
+    animation: slideUp 1s forwards;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+span {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    outline: none;
+    font-size: 1rem;
+}
+
+input:focus {
+    border-color: #4e54c8;
+    box-shadow: 0 0 10px rgba(78, 84, 200, 0.4);
+}
+
+button {
+    width: 80%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4e54c8;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #8f94fb;
+    transform: translateY(-5px);
+}
+
+.remember-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.remember-container input {
+    width: auto;
+    margin-right: 10px;
+}
+
+.remember-container label {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.toggle-container {
+    opacity: 0;
+    animation: togglePanel 1.5s forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(50px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes togglePanel {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+}
+
+.alert p {
+    margin: 0;
+}

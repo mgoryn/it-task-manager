@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link href="{% static "css/navbar.css" %}" rel="stylesheet">
+</head>
+<body>
+  <div class="container position-sticky z-index-sticky top-0">
+    <div class="row">
+      <div class="col-12">
+        <nav class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+          <div class="container-fluid">
+            <a class="navbar-brand font-weight-bolder ms-sm-3 home-link" href="/" rel="tooltip" 
+               title="Designed and Coded by Mykhailo Goryn" 
+               data-placement="bottom">
+               Home page
+            </a>
+            <button class="navbar-toggler shadow-none ms-2" 
+                    type="button"
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navigation" 
+                    aria-controls="navigation"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon mt-2">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center pt-3 pb-2 py-lg-0" id="navigation">
+              <ul class="navbar-nav navbar-nav-hover mx-auto d-flex justify-content-center">
+                <!-- Menu Item 1: Tasks -->
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" 
+                     id="dropdownMenuTasks" data-bs-toggle="dropdown" aria-expanded="false">
+                    Tasks
+                    <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1">
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" 
+                       aria-labelledby="dropdownMenuTasks">
+                    <a href="{% url 'tasks:task-list' %}" class="dropdown-item border-radius-md">Task List</a>
+                  </div>
+                </li>
+
+                <!-- Menu Item 2: Workers -->
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" 
+                     id="dropdownMenuWorkers" data-bs-toggle="dropdown" aria-expanded="false">
+                    Workers
+                    <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1">
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" 
+                       aria-labelledby="dropdownMenuWorkers">
+                    <a href="{% url 'tasks:worker-list' %}" class="dropdown-item border-radius-md">Worker List</a>
+                  </div>
+                </li>
+
+                <!-- Menu Item 3: Teams -->
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" 
+                     id="dropdownMenuTeams" data-bs-toggle="dropdown" aria-expanded="false">
+                    Teams
+                    <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1">
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" 
+                       aria-labelledby="dropdownMenuTeams">
+                    <a href="{% url 'tasks:team-list' %}" class="dropdown-item border-radius-md">Team List</a>
+                  </div>
+                </li>
+
+                <!-- Menu Item 4: Tags -->
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" 
+                     id="dropdownMenuTags" data-bs-toggle="dropdown" aria-expanded="false">
+                    Tags
+                    <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1">
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" 
+                       aria-labelledby="dropdownMenuTags">
+                    <a href="{% url 'tasks:tag-list' %}" class="dropdown-item border-radius-md">Tag List</a>
+                  </div>
+                </li>
+
+                <!-- Menu Item 5: Projects -->
+                <li class="nav-item dropdown dropdown-hover mx-2">
+                  <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" 
+                     id="dropdownMenuProjects" data-bs-toggle="dropdown" aria-expanded="false">
+                    Projects
+                    <img src="{{ ASSETS_ROOT }}/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1">
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-animation dropdown-md p-3 border-radius-lg mt-0 mt-lg-3" 
+                       aria-labelledby="dropdownMenuProjects">
+                    <a href="{% url 'tasks:project-list' %}" class="dropdown-item border-radius-md">Project List</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <form action="{% url 'logout' %}" method="POST" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-link nav-link nav-link-icon me-2">
+               <i class="fa fa-sign-out me-1"></i>
+               <p class="d-inline text-sm z-index-1 font-weight-bold" data-bs-toggle="tooltip" 
+                  data-bs-placement="bottom" title="Logout">Logout</p>
+              </button>
+            </form>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

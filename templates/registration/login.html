@@ -1,0 +1,48 @@
+{% load crispy_forms_filters %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>IT Task Manager</title>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-in">
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <h1>Sign In</h1>
+                <span>Enter your username and password</span><br>
+              
+                {{ form|crispy }}
+                
+                <div class="remember-container">
+                    <input type="checkbox" name="remember_me" id="remember_me">
+                    <label for="remember_me">Remember Me</label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Sign In</button>
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-right">
+                  <h1>Welcome, Friend!</h1>
+                  <p>Enter your personal details to use all of site features</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>

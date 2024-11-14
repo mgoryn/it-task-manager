@@ -1,0 +1,69 @@
+{% load query_transform %}
+{% if is_paginated %}
+  <nav aria-label="Page navigation" class="d-flex justify-content-center mt-4 mb-4">
+    <ul class="pagination">
+      {# Переход до першої сторінки #}
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a href="?{% query_transform request page=1 %}" class="page-link" aria-label="First">
+            <span aria-hidden="true">&laquo;&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a href="?{% query_transform request page=page_obj.previous_page_number %}" class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">&laquo;&laquo;</span>
+        </li>
+        <li class="page-item disabled">
+          <span class="page-link">&laquo;</span>
+        </li>
+      {% endif %}
+
+      {# Показ поточної сторінки і кількох сусідніх сторінок #}
+      {% for num in paginator.page_range %}
+        {% if num == page_obj.number %}
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">{{ num }}</span>
+          </li>
+        {% elif num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
+          <li class="page-item">
+            <a href="?{% query_transform request page=num %}" class="page-link">{{ num }}</a>
+          </li>
+        {% elif num == 1 or num == paginator.num_pages %}
+          <li class="page-item">
+            <a href="?{% query_transform request page=num %}" class="page-link">{{ num }}</a>
+          </li>
+        {% elif num == page_obj.number|add:"-3" or num == page_obj.number|add:"3" %}
+          <li class="page-item disabled">
+            <span class="page-link">...</span>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {# Переход до наступної сторінки і останньої сторінки #}
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a href="?{% query_transform request page=page_obj.next_page_number %}" class="page-link" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a href="?{% query_transform request page=paginator.num_pages %}" class="page-link" aria-label="Last">
+            <span aria-hidden="true">&raquo;&raquo;</span>
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">&raquo;</span>
+        </li>
+        <li class="page-item disabled">
+          <span class="page-link">&raquo;&raquo;</span>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}
