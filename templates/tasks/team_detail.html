@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Team Detail {% endblock title %}
+
+{% block content %}
+<header class="bg-gradient-dark">
+  <div class="page-header section-height-75" style="background-image: url('{{ ASSETS_ROOT }}/img/office-dark.jpg');">
+    <span class="mask bg-gradient-info opacity-8"></span>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mx-auto my-auto">
+          <h1 class="text-white">{{ object.name }}</h1>
+          <p class="lead mb-4 text-white opacity-8">View the details of this team below.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th>Name:</th>
+            <td>{{ object.name }}</td>
+          </tr>
+          <tr>
+            <th>Description:</th>
+            <td>{{ object.description }}</td>
+          </tr>
+          <tr>
+            <th>Workers:</th>
+            <td>
+              {% for worker in object.members.all %}
+                {{ worker.username }}{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="mb-3">
+        <a href="{% url 'tasks:team-update' object.pk %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'tasks:team-delete' object.pk %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'tasks:team-list' %}" class="btn btn-secondary">Back to Team List</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

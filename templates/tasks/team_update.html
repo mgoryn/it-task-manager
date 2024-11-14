@@ -1,0 +1,55 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Update Team {% endblock title %}
+
+{% block content %}
+<header class="bg-gradient-dark">
+  <div class="page-header section-height-75" style="background-image: url('{{ ASSETS_ROOT }}/img/office-dark.jpg');">
+    <span class="mask bg-gradient-info opacity-8"></span>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mx-auto my-auto">
+          <h1 class="text-white">Update Team: {{ object.name }}</h1>
+          <p class="lead mb-4 text-white opacity-8">Edit the details of this team below.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <form method="post">
+        {% csrf_token %}
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>Name:</th>
+              <td>
+                <input type="text" name="name" class="form-control" value="{{ object.name }}" required>
+              </td>
+            </tr>
+            <tr>
+              <th>Description:</th>
+              <td>
+                <textarea name="description" class="form-control" required>{{ object.description }}</textarea>
+              </td>
+            </tr>
+            <tr>
+              <th>Workers:</th>
+              <td>
+                {{ form.members }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-warning">Update Team</button>
+          <a href="{% url 'tasks:team-list' %}" class="btn btn-secondary">Back to Team List</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

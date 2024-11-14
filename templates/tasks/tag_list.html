@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Tag List {% endblock title %}
+
+{% block content %}
+<header class="bg-gradient-dark">
+  <div class="page-header section-height-75" style="background-image: url('{{ ASSETS_ROOT }}/img/TagPhoto.jpg');">
+    <span class="mask bg-gradient-info opacity-8"></span>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mx-auto my-auto">
+          <h1 class="text-white">Tag List</h1>
+          <p class="lead mb-4 text-white opacity-8">Manage your tags here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="search-form">
+          {% include "includes/search.html" %}
+        </div>
+        <a href="{% url 'tasks:tag-create' %}" class="btn btn-primary">Create New Tag</a>
+      </div>
+      <ul class="list-group">
+        {% for tag in object_list %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ tag.name }}
+            <a href="{% url 'tasks:tag-delete' tag.pk %}" class="btn btn-danger btn-sm">Delete</a>
+          </li>
+        {% empty %}
+          <li class="list-group-item">No tags available.</li>
+        {% endfor %}
+        
+        <div class="pagination">
+          {% include "includes/pagination.html" %}
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

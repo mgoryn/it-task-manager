@@ -1,0 +1,45 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Worker Detail {% endblock title %}
+
+{% block content %}
+<header class="bg-gradient-dark">
+  <div class="page-header section-height-75" style="background-image: url('{{ ASSETS_ROOT }}/img/office-dark.jpg');">
+    <span class="mask bg-gradient-info opacity-8"></span>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mx-auto my-auto">
+          <h1 class="text-white">Worker Detail</h1>
+          <p class="lead mb-4 text-white opacity-8">View worker information here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <table class="table">
+        <tr>
+          <th>Username:</th>
+          <td>{{ worker.username }}</td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td>{{ worker.email }}</td>
+        </tr>
+        <tr>
+          <th>Position:</th>
+          <td>{{ worker.position.name }}</td>
+        </tr>
+      </table>
+
+      <a href="{% url 'tasks:worker-update' worker.pk %}" class="btn btn-warning">Edit</a>
+      <a href="{% url 'tasks:worker-delete' worker.pk %}" class="btn btn-danger">Delete</a>
+      <a href="{% url 'tasks:worker-list' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
