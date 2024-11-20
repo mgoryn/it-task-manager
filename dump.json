@@ -1,0 +1,296 @@
+[
+{
+    "model": "tasks.position",
+    "pk": 1,
+    "fields": {
+        "name": "Project Manager"
+    }
+},
+{
+    "model": "tasks.position",
+    "pk": 2,
+    "fields": {
+        "name": "Developer"
+    }
+},
+{
+    "model": "tasks.position",
+    "pk": 3,
+    "fields": {
+        "name": "Designer"
+    }
+},
+{
+    "model": "tasks.position",
+    "pk": 4,
+    "fields": {
+        "name": "DevOps Engineer"
+    }
+},
+{
+    "model": "tasks.position",
+    "pk": 5,
+    "fields": {
+        "name": "Quality Assurance (QA) Engineer"
+    }
+},
+{
+    "model": "tasks.position",
+    "pk": 6,
+    "fields": {
+        "name": "DevOps Engineer"
+    }
+},
+{
+    "model": "tasks.worker",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$QI8CvpLu3UlRPgdbxq7hKE$9y+5rRmoIy7iVzNiH24o3mU9o6ElLh6JEM5CfQvJRms=",
+        "last_login": "2024-11-12T18:12:26.340Z",
+        "is_superuser": true,
+        "username": "Misha",
+        "first_name": "",
+        "last_name": "",
+        "email": "misha@mail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-10-29T18:25:35.073Z",
+        "position": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "tasks.worker",
+    "pk": 2,
+    "fields": {
+        "password": "alexander",
+        "last_login": "2024-11-04T20:02:02Z",
+        "is_superuser": false,
+        "username": "Alex",
+        "first_name": "Alex",
+        "last_name": "Alex",
+        "email": "alex@mail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-11-04T20:00:52Z",
+        "position": 2,
+        "groups": [
+            1
+        ],
+        "user_permissions": [
+            41
+        ]
+    }
+},
+{
+    "model": "tasks.worker",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$YPqXeK7wW0KfD72RK2Axdj$OTmMzXGIh/ecQOyabMf9aBA9BZgS7FhBqUgK/uVuq40=",
+        "last_login": "2024-11-06T21:16:55.218Z",
+        "is_superuser": true,
+        "username": "Maria",
+        "first_name": "",
+        "last_name": "",
+        "email": "Maria@mail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-11-06T21:16:12.022Z",
+        "position": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "tasks.team",
+    "pk": 1,
+    "fields": {
+        "name": "Team 1 for test bug",
+        "description": "That discription for team 1 testing bug",
+        "members": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "tasks.team",
+    "pk": 2,
+    "fields": {
+        "name": "434",
+        "description": "434",
+        "members": [
+            1
+        ]
+    }
+},
+{
+    "model": "tasks.project",
+    "pk": 1,
+    "fields": {
+        "name": "Create new BANK site",
+        "description": "This is descript for BANK site",
+        "team": [
+            1
+        ]
+    }
+},
+{
+    "model": "tasks.project",
+    "pk": 2,
+    "fields": {
+        "name": "Hello",
+        "description": "Desc Hello",
+        "team": [
+            1
+        ]
+    }
+},
+{
+    "model": "tasks.project",
+    "pk": 3,
+    "fields": {
+        "name": "Taxi Service",
+        "description": "That Description",
+        "team": [
+            1
+        ]
+    }
+},
+{
+    "model": "tasks.project",
+    "pk": 5,
+    "fields": {
+        "name": "New test project",
+        "description": "This is a Description for test project",
+        "team": [
+            2
+        ]
+    }
+},
+{
+    "model": "tasks.task",
+    "pk": 1,
+    "fields": {
+        "name": "Develop User Interface",
+        "description": "This is description for develop user Interface",
+        "deadline": "2024-12-31",
+        "is_complete": false,
+        "priority": "Medium",
+        "task_type": 3,
+        "project": 1,
+        "assignees": [
+            1
+        ],
+        "tags": [
+            12
+        ]
+    }
+},
+{
+    "model": "tasks.tag",
+    "pk": 6,
+    "fields": {
+        "name": "Bug"
+    }
+},
+{
+    "model": "tasks.tag",
+    "pk": 9,
+    "fields": {
+        "name": "Testing"
+    }
+},
+{
+    "model": "tasks.tag",
+    "pk": 10,
+    "fields": {
+        "name": "Ready for Review"
+    }
+},
+{
+    "model": "tasks.tag",
+    "pk": 11,
+    "fields": {
+        "name": "Long Term"
+    }
+},
+{
+    "model": "tasks.tag",
+    "pk": 12,
+    "fields": {
+        "name": "Short Term"
+    }
+},
+{
+    "model": "tasks.tag",
+    "pk": 13,
+    "fields": {
+        "name": "High Stake"
+    }
+},
+{
+    "model": "tasks.tag",
+    "pk": 14,
+    "fields": {
+        "name": "Marketing Team"
+    }
+},
+{
+    "model": "tasks.tag",
+    "pk": 15,
+    "fields": {
+        "name": "QA Team"
+    }
+},
+{
+    "model": "tasks.tasktype",
+    "pk": 1,
+    "fields": {
+        "name": "Bug Fix"
+    }
+},
+{
+    "model": "tasks.tasktype",
+    "pk": 2,
+    "fields": {
+        "name": "Code Review"
+    }
+},
+{
+    "model": "tasks.tasktype",
+    "pk": 3,
+    "fields": {
+        "name": "Feature Development"
+    }
+},
+{
+    "model": "tasks.tasktype",
+    "pk": 4,
+    "fields": {
+        "name": "Research"
+    }
+},
+{
+    "model": "tasks.tasktype",
+    "pk": 5,
+    "fields": {
+        "name": "Design"
+    }
+},
+{
+    "model": "tasks.tasktype",
+    "pk": 6,
+    "fields": {
+        "name": "Deployment"
+    }
+},
+{
+    "model": "tasks.tasktype",
+    "pk": 7,
+    "fields": {
+        "name": "Testing"
+    }
+}
+]

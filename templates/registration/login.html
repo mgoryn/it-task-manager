@@ -19,6 +19,12 @@
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
                 <h1>Sign In</h1>
+                <span>Enter your username and password</span>
+                <p style="color: red; font-weight: bold;">
+                    Example:<br>
+                    username: test<br>
+                    password: test123
+                </p>
                 <span>Enter your username and password</span><br>
               
                 {{ form|crispy }}
