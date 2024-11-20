@@ -1,0 +1,48 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Create Team {% endblock title %}
+
+{% block content %}
+<header class="bg-gradient-dark">
+  <div class="page-header section-height-75" style="background-image: url('{{ ASSETS_ROOT }}/img/office-dark.jpg');">
+    <span class="mask bg-gradient-info opacity-8"></span>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mx-auto my-auto">
+          <h1 class="text-white">Create Team</h1>
+          <p class="lead mb-4 text-white opacity-8">Fill in the details to create a new team.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <form method="post">
+        {% csrf_token %}
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>Name:</th>
+              <td>{{ form.name }}</td>
+            </tr>
+            <tr>
+              <th>Description:</th>
+              <td>{{ form.description }}</td>
+            </tr>
+            <tr>
+              <th>Members:</th>
+              <td>{{ form.members }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Create Team</button>
+        <a href="{% url 'tasks:team-list' %}" class="btn btn-secondary">Back to Team List</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

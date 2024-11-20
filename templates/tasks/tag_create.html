@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %} Create Tag {% endblock title %}
+
+{% block content %}
+<header class="bg-gradient-dark">
+  <div class="page-header section-height-75" style="background-image: url('{{ ASSETS_ROOT }}/img/office-dark.jpg');">
+    <span class="mask bg-gradient-info opacity-8"></span>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center mx-auto my-auto">
+          <h1 class="text-white">Create a New Tag</h1>
+          <p class="lead mb-4 text-white opacity-8">Please fill out the form below to create a new tag.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <button type="submit" class="btn btn-primary">Create Tag</button>
+        <a href="{% url 'tasks:tag-list' %}" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
